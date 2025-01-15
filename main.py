@@ -25,7 +25,7 @@ def delete_all_data(db_config):
    
         try:
             # Truncate table (faster than DELETE FROM)
-            if(table != 'users' and table != 'musical_instruments' and table != 'music_genres' and table != 'music_subgenres' and table != 'knex_migrations' and table != 'knex_migrations_lock'):
+            if(table != 'users' and table != 'musical_instruments' and table != 'music_genres' and table != 'music_subgenres' and table != 'knex_migrations' and table != 'knex_migrations_lock' and table != 'languages' and table != 'countries'):
                 cursor.execute(f"DELETE FROM `{table}`") # Use backticks for table names
                 print(f"Data deleted from table: {table}")
                 db_config.commit()
