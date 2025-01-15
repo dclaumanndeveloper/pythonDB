@@ -25,9 +25,10 @@ def delete_all_data(db_config):
    
         try:
             # Truncate table (faster than DELETE FROM)
-            cursor.execute(f"DELETE FROM `{table}`") # Use backticks for table names
-            print(f"Data deleted from table: {table}")
-            db_config.commit()
+            if(table != 'users' and table != 'musical_instruments' and table != 'music_genres' and table != 'music_subgenres' and table != 'knex_migrations' and table != 'knex_migrations_lock'):
+                cursor.execute(f"DELETE FROM `{table}`") # Use backticks for table names
+                print(f"Data deleted from table: {table}")
+                db_config.commit()
         except pymysql.Error as e:
             print(f"Error deleting data from table {table}: {e}")
             db_config.rollback() # Rollback in case of error in one table
